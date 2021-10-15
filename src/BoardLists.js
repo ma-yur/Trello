@@ -30,9 +30,6 @@ export class BoardLists extends Component {
 		this.UpdateData();
 	};
 
-	
-
-
 	render() {
 		let lists = this.state.lists.map((list) => {
 			return <List key={list.id} let list={list} />;

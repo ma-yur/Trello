@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import Board from "./Board";
+import CreateBoard from "./CreateBoard";
 
 export class AllBoards extends Component {
 	constructor(props) {
@@ -20,19 +22,17 @@ export class AllBoards extends Component {
 			.catch((err) => console.error(err));
 	};
 
-	handleClick = (id) =>{
-		this.props.handleClick(id)
-	}
-
 	render() {
 		let boards = this.state.boards.map((board) => {
-			return <Board key={board.id} {...board} handleClick = {this.handleClick}  />;
+			return <Board key={board.id} {...board} />;
 		});
 
 		return (
 			<div className=" col-span-3  flex-column items-start px-4 ">
 				<h1>Your work space boards</h1>
 				<div className="flex flex-wrap">{boards}</div>
+
+				<CreateBoard />
 			</div>
 		);
 	}

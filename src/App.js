@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
-import { Route } from "react-router";
-
+import { Route, Switch } from "react-router";
 
 import Navbar from "./Navbar";
 import Workspace from "./Workspace";
@@ -14,23 +13,22 @@ export class App extends Component {
 		this.state = { boardId: "", isClicked: false };
 	}
 
-	getBoardId = (id) => {
-		this.setState({ boardId: id, isClicked: true });
-	};
-
-  componentDidMount=()=>{
-
-  }
-	
-  
 	render() {
-
 		return (
 			<div>
 				<Navbar />
-				<Workspace handleClick={this.getBoardId} />
-				
-				{(this.state.isClicked)&& <BoardList boardId={this.state.boardId}/> }
+
+				<Switch>
+					<Route exact path="/" component={() => <Workspace />} />
+
+					<Route
+						exact
+						path="/:id"
+						component={(routeProps) => (
+							<BoardList boardId={routeProps.match.params.id} />
+						)}
+					/>
+				</Switch>
 			</div>
 		);
 	}

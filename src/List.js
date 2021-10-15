@@ -4,7 +4,6 @@ import Card from "./Card";
 export class List extends Component {
 	constructor(props) {
 		super(props);
-		// console.log(props.list.id);
 		this.state = { cards: [] };
 	}
 
@@ -31,7 +30,7 @@ export class List extends Component {
 		const { name } = this.props.list;
 
 		let cards = this.state.cards.map((card) => {
-			return <Card key={card.id} card={card} />;
+			return <Card key={card.id} card={card} listName  = {name} />;
 		});
 		return (
 			<div className="bg-gray-200 flex-shrink-0 flex-column w-60 m-5 px-2 pb-7 pt-3">

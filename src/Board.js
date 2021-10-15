@@ -1,21 +1,22 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Board extends Component {
-	handleClick = () => {
-		this.props.handleClick(this.props.id);
-	};
+	// handleClick = () => {
+	// 	this.props.handleClick(this.props.id);
+	// };
 
 	render() {
 		const { name, prefs } = this.props;
 		let backgroundColor = prefs.backgroundImage ? "red" : prefs.background;
 		return (
-			<div
+			<Link
+				className=" h-20 w-1/5 inline-block cursor-pointer p-3  m-1  text-white"
+				to={`/${this.props.id}`}
 				style={{ backgroundColor: backgroundColor }}
-				className=" cursor-pointer p-3 w-1/5 m-1 h-20 text-white"
-				onClick={this.handleClick}
 			>
 				{name}
-			</div>
+			</Link>
 		);
 	}
 }
