@@ -34,7 +34,7 @@ export class BoardLists extends Component {
 		let lists = this.state.lists.map((list) => {
 			return <List key={list.id} let list={list} />;
 		});
-		if (!this.state.loading) return <div className="flex">{lists}</div>;
+		if (!this.state.loading) return <div className="flex items-start">{lists}</div>;
 		else {
 			return <div>Loading.....</div>;
 		}

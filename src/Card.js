@@ -21,7 +21,7 @@ export class Card extends Component {
 			<div>
 				<div
 					onClick={this.openModal}
-					className="bg-white rounded w-11/12 p-1 mx-auto my-1"
+					className="bg-white hover:bg-gray-100 shadow rounded w-11/12 p-1 my-2"
 				>
 					<p>{name}</p>
 				</div>

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Card from "./Card";
+import Addcard from "./Addcard";
 
 export class List extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = { cards: [] };
 	}
 
@@ -25,17 +27,22 @@ export class List extends Component {
 	componentDidMount() {
 		this.UpdateData();
 	}
+	componentDidUpdate() {
+		this.UpdateData();
+	}
 
 	render() {
 		const { name } = this.props.list;
 
 		let cards = this.state.cards.map((card) => {
-			return <Card key={card.id} card={card} listName  = {name} />;
+			return <Card key={card.id} card={card} listName={name} />;
 		});
 		return (
-			<div className="bg-gray-200 flex-shrink-0 flex-column w-60 m-5 px-2 pb-7 pt-3">
-				<div>{name}</div>
+			<div className="bg-gray-200 shadow flex-shrink-0 flex-column w-72 m-5 pl-4 pb-3 pt-3">
+				<div className="font-bold">{name}</div>
 				{cards}
+
+				<Addcard listId={this.props.list.id} />
 			</div>
 		);
 	}
