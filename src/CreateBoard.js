@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
+import CreateBoardModal from "./CreateBoardModal";
+
 export class CreateBoard extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { openModal: true };
+		this.state = { openModal: false };
 	}
 
 	openModal = () => {
@@ -13,11 +15,19 @@ export class CreateBoard extends Component {
 	closeModal = () => {
 		this.setState({ openModal: false });
 	};
-
-	handleSubmit = (e) =>{
-		e.preventDefault()
-		
-	}
+	createBoard = (name) => {
+		fetch(
+			`https://api.trello.com/1/boards/?name=${name}&key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6`,
+			{
+				method: "POST",
+			}
+		)
+			.then((response) => {
+				console.log(`Response: ${response.status} ${response.statusText}`);
+				return response.text();
+			})
+			.catch((err) => console.error(err));
+	};
 
 	render() {
 		return (
@@ -31,31 +41,10 @@ export class CreateBoard extends Component {
 
 				{/* create board modal */}
 				{this.state.openModal && (
-					<div className=" bg-black bg-opacity-70 absolute  top-0 h-1/5 w-1/5 flex  ">
-						<form
-						onSubmit = {this.handleSubmit}
-							action=""
-							className="flex flex-wrap items-center justify-around"
-						>
-							<input
-								className="p-1 w-8/12 "
-								type="text"
-								name=""
-								id=""
-								placeholder="Enter board name...."
-							/>
-							<button className="bg-blue-500 p-1 text-white my-3">
-								Create board
-							</button>
-						</form>
-
-						<button
-							onClick={this.closeModal}
-							className="absolute top-0 right-0 p-10 text-white"
-						>
-							x
-						</button>
-					</div>
+					<CreateBoardModal
+						closeModal={this.closeModal}
+						handleSubmit={this.createBoard}
+					/>
 				)}
 			</>
 		);
