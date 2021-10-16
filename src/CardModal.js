@@ -18,11 +18,10 @@ export class CardModal extends Component {
 							<span className="italic underline ">{this.props.listName}</span>
 						</p>
 						<h1 className="text-bold my-4">Description</h1>
-
 					</div>
 					<div>
 						<h1>Add to card</h1>
-						<p>checklist</p>
+						<p className="bg-green-500">checklist</p>
 					</div>
 					<button
 						onClick={this.handleClose}

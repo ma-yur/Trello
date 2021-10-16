@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import List from "./List";
+import AddList from "./AddList";
 
 export class BoardLists extends Component {
 	constructor(props) {
@@ -31,13 +32,21 @@ export class BoardLists extends Component {
 			this.UpdateData();
 		}
 	};
+	addList = (newListData) => {
+		this.setState({ lists: [...this.state.lists, newListData] });
+	};
 
 	render() {
 		let lists = this.state.lists.map((list) => {
 			return <List key={list.id} let list={list} />;
 		});
 		if (!this.state.loading)
-			return <div className="flex items-start">{lists}</div>;
+			return (
+				<div className="flex items-start">
+					<div className="flex items-start">{lists}</div>
+					<AddList boardId={this.props.boardId} handleAddList={this.addList} />
+				</div>
+			);
 		else {
 			return <div>Loading.....</div>;
 		}
