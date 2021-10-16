@@ -23,13 +23,15 @@ export class CreateBoard extends Component {
 			}
 		)
 			.then((response) => {
-				return response.text();
+				return response.json();
+			})
+			.then((data)=>{
+				this.props.boardAdded(data)
 			})
 			.catch((err) => console.error(err));
 	};
 	createBoard = (name) => {
 		this.updateData(name);
-		this.props.boardAdded();
 	};
 
 	render() {
@@ -42,7 +44,6 @@ export class CreateBoard extends Component {
 					create new board
 				</div>
 
-				{/* create board modal */}
 				{this.state.openModal && (
 					<CreateBoardModal
 						closeModal={this.closeModal}

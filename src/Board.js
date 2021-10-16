@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export class Board extends Component {
-	// handleClick = () => {
-	// 	this.props.handleClick(this.props.id);
-	// };
-
 	render() {
 		const { name, prefs } = this.props;
 		let backgroundColor = prefs.backgroundImage ? "red" : prefs.background;

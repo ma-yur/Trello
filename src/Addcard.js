@@ -23,7 +23,10 @@ export class Addcard extends Component {
 			}
 		)
 			.then((response) => {
-				return response.text();
+				return response.json();
+			})
+			.then((data) => {
+				this.props.cardAdded(data);
 			})
 
 			.catch((err) => console.error(err));
@@ -33,7 +36,6 @@ export class Addcard extends Component {
 		e.preventDefault();
 		this.updatedata();
 		this.setState({ isEditing: false, cardName: "" });
-		this.props.isCardAdded()
 	};
 
 	render() {

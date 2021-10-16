@@ -36,7 +36,7 @@ export class AddList extends Component {
 			return (
 				<form
 					onSubmit={this.handleSubmit}
-					className="bg-green-500 w-72 m-5 pl-4 p-3"
+					className="bg-gray-300 w-72 m-5 pl-4 p-3"
 					action=""
 				>
 					<input
@@ -63,7 +63,7 @@ export class AddList extends Component {
 			return (
 				<div
 					onClick={this.handleEdit}
-					className="bg-gray-200 hover:bg-gray-300 cursor-pointer bg-opacity-30 shadow  w-72 m-5 pl-4 p-3 "
+					className="bg-black hover:bg-gray-300 cursor-pointer bg-opacity-5 text-gray-500 shadow  w-72 m-5 pl-4 p-3 "
 				>
 					+ add list
 				</div>

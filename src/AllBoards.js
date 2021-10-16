@@ -6,7 +6,7 @@ import CreateBoard from "./CreateBoard";
 export class AllBoards extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { boards: [], boardAdded: false };
+		this.state = { boards: [] };
 	}
 	updateData = () => {
 		console.log("board data fetched");
@@ -22,18 +22,13 @@ export class AllBoards extends Component {
 			.then((data) => this.setState({ boards: data }))
 			.catch((err) => console.error(err));
 	};
-	
+
 	componentDidMount = () => {
 		this.updateData();
 	};
-	componentDidUpdate = () => {
-		if (this.state.boardAdded) {
-			this.updateData();
-			this.setState({ boardAdded: false });
-		}
-	};
-	boardAdded = () => {
-		this.setState({ boardAdded: true });
+
+	boardAdded = (data) => {
+		this.setState({ boards: [...this.state.boards, data] });
 	};
 
 	render() {

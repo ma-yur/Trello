@@ -6,7 +6,7 @@ export class List extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { cards: [], cardAdded: false };
+		this.state = { cards: [] };
 	}
 
 	UpdateData = () => {
@@ -28,13 +28,12 @@ export class List extends Component {
 		this.UpdateData();
 	}
 	componentDidUpdate(prev) {
-		if (prev.list.id !== this.props.list.id || this.state.cardAdded) {
+		if (prev.list.id !== this.props.list.id) {
 			this.UpdateData();
-			this.setState({ cardAdded: false });
 		}
 	}
-	cardAdded = () => {
-		this.setState({ cardAdded: true });
+	cardAdded = (cardData) => {
+		this.setState({ cards: [...this.state.cards, cardData] });
 	};
 
 	render() {
@@ -48,7 +47,7 @@ export class List extends Component {
 				<div className="font-bold">{name}</div>
 				{cards}
 
-				<Addcard listId={this.props.list.id} isCardAdded={this.cardAdded} />
+				<Addcard listId={this.props.list.id} cardAdded={this.cardAdded} />
 			</div>
 		);
 	}
