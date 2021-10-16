@@ -15,7 +15,7 @@ export class CreateBoard extends Component {
 	closeModal = () => {
 		this.setState({ openModal: false });
 	};
-	createBoard = (name) => {
+	updateData = (name) => {
 		fetch(
 			`https://api.trello.com/1/boards/?name=${name}&key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6`,
 			{
@@ -23,10 +23,13 @@ export class CreateBoard extends Component {
 			}
 		)
 			.then((response) => {
-				console.log(`Response: ${response.status} ${response.statusText}`);
 				return response.text();
 			})
 			.catch((err) => console.error(err));
+	};
+	createBoard = (name) => {
+		this.updateData(name);
+		this.props.boardAdded();
 	};
 
 	render() {

@@ -33,6 +33,7 @@ export class Addcard extends Component {
 		e.preventDefault();
 		this.updatedata();
 		this.setState({ isEditing: false, cardName: "" });
+		this.props.isCardAdded()
 	};
 
 	render() {

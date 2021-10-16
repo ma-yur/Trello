@@ -26,15 +26,18 @@ export class BoardLists extends Component {
 	componentDidMount = () => {
 		this.UpdateData();
 	};
-	componentDidUpdate = () => {
-		this.UpdateData();
+	componentDidUpdate = (prev) => {
+		if (prev.boardId !== this.props.boardId) {
+			this.UpdateData();
+		}
 	};
 
 	render() {
 		let lists = this.state.lists.map((list) => {
 			return <List key={list.id} let list={list} />;
 		});
-		if (!this.state.loading) return <div className="flex items-start">{lists}</div>;
+		if (!this.state.loading)
+			return <div className="flex items-start">{lists}</div>;
 		else {
 			return <div>Loading.....</div>;
 		}

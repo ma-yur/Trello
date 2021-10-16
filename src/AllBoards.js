@@ -6,9 +6,10 @@ import CreateBoard from "./CreateBoard";
 export class AllBoards extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { boards: [] };
+		this.state = { boards: [], boardAdded: false };
 	}
-	componentDidMount = () => {
+	updateData = () => {
+		console.log("board data fetched");
 		fetch(
 			"https://api.trello.com/1/members/me/boards?fields=name,url,prefs&key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6",
 			{
@@ -21,18 +22,18 @@ export class AllBoards extends Component {
 			.then((data) => this.setState({ boards: data }))
 			.catch((err) => console.error(err));
 	};
+	
+	componentDidMount = () => {
+		this.updateData();
+	};
 	componentDidUpdate = () => {
-		fetch(
-			"https://api.trello.com/1/members/me/boards?fields=name,url,prefs&key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6",
-			{
-				method: "GET",
-			}
-		)
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => this.setState({ boards: data }))
-			.catch((err) => console.error(err));
+		if (this.state.boardAdded) {
+			this.updateData();
+			this.setState({ boardAdded: false });
+		}
+	};
+	boardAdded = () => {
+		this.setState({ boardAdded: true });
 	};
 
 	render() {
@@ -45,7 +46,7 @@ export class AllBoards extends Component {
 				<h1>Your work space boards</h1>
 				<div className="flex flex-wrap">{boards}</div>
 
-				<CreateBoard />
+				<CreateBoard boardAdded={this.boardAdded} />
 			</div>
 		);
 	}
