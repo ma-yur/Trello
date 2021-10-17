@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import AllBoards from "./AllBoards";
+import AllBoards from "./Boards/AllBoards";
 
 export class Workspace extends Component {
 	// handleClick = (id) => {

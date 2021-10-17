@@ -3,9 +3,12 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router";
 
 import Navbar from "./Navbar";
+
+
 import Workspace from "./Workspace";
 
-import BoardList from "./BoardLists";
+
+import BoardList from "./Lists/BoardLists";
 
 export class App extends Component {
 	constructor(props) {

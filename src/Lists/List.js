@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Card from "./Card";
-import Addcard from "./Addcard";
+import Card from "../Card";
+import Addcard from "../Addcard";
 
 export class List extends Component {
 	constructor(props) {
