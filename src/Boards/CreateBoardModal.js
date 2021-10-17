@@ -34,6 +34,7 @@ export class CreateBoardModal extends Component {
 						}}
 						placeholder="Enter board name...."
 					/>
+
 					<button className="bg-blue-500 p-1 text-white my-3">
 						Create board
 					</button>
@@ -45,6 +46,7 @@ export class CreateBoardModal extends Component {
 				>
 					x
 				</button>
+				
 			</div>
 		);
 	}

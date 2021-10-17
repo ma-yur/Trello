@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CheckLists from "./CheckLists";
-import CheckListBtn from "./CheckListBtn";
+import CheckLists from "./checkList/CheckLists";
+import CheckListBtn from "./checkList/CheckListBtn";
 
 export class CardModal extends Component {
 	constructor(props) {

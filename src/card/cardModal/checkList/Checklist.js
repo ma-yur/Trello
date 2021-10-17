@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import CheckListItems from "./CheckListItems";
+import AddCheckListItems from "./AddCheckListItems";
 
 export class Checklist extends Component {
 	constructor(props) {
@@ -22,14 +24,23 @@ export class Checklist extends Component {
 	componentDidMount = () => {
 		this.fetchdata();
 	};
+
+	handleAddItem = (newItem) => {
+		this.setState({ items: [...this.state.items, newItem] });
+	};
+
 	render() {
-		let checkListItems = this.state.items.map((item) => {
-			return <CheckListItems key={item.id} itemName={item.name} />;
-		});
 		return (
 			<div>
 				<h1 className=" font-bold  m-3 "> + {this.props.checkListName}</h1>
-				{checkListItems}
+				<CheckListItems
+					checkListId={this.props.checkList.id}
+					checkListItems={this.state.items}
+				/>
+				<AddCheckListItems
+					checkListId={this.props.checkList.id}
+					addItem={this.handleAddItem}
+				/>
 			</div>
 		);
 	}

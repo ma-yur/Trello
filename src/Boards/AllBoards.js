@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Board from "../Board";
+import Board from "./Board";
 import CreateBoard from "./CreateBoard";
 
 export class AllBoards extends Component {
@@ -40,7 +40,7 @@ export class AllBoards extends Component {
 			<div className=" col-span-3  flex-column items-start px-4 ">
 				<h1>Your work space boards</h1>
 				<div className="flex flex-wrap">{boards}</div>
-
+				
 				<CreateBoard boardAdded={this.boardAdded} />
 			</div>
 		);

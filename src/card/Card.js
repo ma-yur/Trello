@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CardModal from "./CardModal";
+import CardModal from "./cardModal/CardModal";
 
 export class Card extends Component {
 	constructor(props) {
