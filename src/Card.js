@@ -30,6 +30,8 @@ export class Card extends Component {
 						handleClose={this.CloseModal}
 						name={name}
 						listName={this.props.listName}
+						checkListIds={this.props.card.idChecklists}
+						cardId={this.props.card.id}
 					/>
 				)}
 			</div>

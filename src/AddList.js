@@ -3,7 +3,6 @@ import React, { Component } from "react";
 export class AddList extends Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props.boardId);
 		this.state = { isEditing: true, listName: "" };
 	}
 	handleEdit = () => {

@@ -1,27 +1,50 @@
 import React, { Component } from "react";
+import CheckLists from "./CheckLists";
+import CheckListBtn from "./CheckListBtn";
 
 export class CardModal extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { addCheckListdata: [] };
+	}
+
 	handleClose = () => {
 		this.props.handleClose();
 	};
+
+	handleAddCheckList = (data) => {
+		this.setState({ addCheckListdata: data });
+	};
+
 	render() {
 		return (
 			<div
-				className=" bg-black bg-opacity-5 absolute inset-0 h-screen flex items-center justify-center "
+				className=" bg-black bg-opacity-50 absolute inset-0 h-full flex items-center justify-center "
 				id="overlay"
 			>
-				<div className="bg-white  relative flex items-start justify-around w-5/12 h-3/4 py-10 px-5">
-					<div>
+				<div className="bg-white  relative grid grid-cols-2 gap-8 w-5/12 p-20">
+					<div className="col-span-1">
 						<h1 className="text-bold">{this.props.name}</h1>
 						<p className="text-gray-500">
 							in list
 							<span className="italic underline ">{this.props.listName}</span>
 						</p>
-						<h1 className="text-bold my-4">Description</h1>
+
+						<div>
+							<CheckLists
+								addCheckListdata={this.state.addCheckListdata}
+								checkListIds={this.props.checkListIds}
+							/>
+						</div>
 					</div>
-					<div>
+					<div className="col-span-1">
 						<h1>Add to card</h1>
-						<p className="bg-green-500">checklist</p>
+						<div className=" cursor-pointer rounded  bg-gray-300 my-3 p-1">
+							<CheckListBtn
+								cardId={this.props.cardId}
+								handleAddCheckList={this.handleAddCheckList}
+							/>
+						</div>
 					</div>
 					<button
 						onClick={this.handleClose}
