@@ -39,6 +39,10 @@ export class Checklist extends Component {
 	handleAddItem = (newItem) => {
 		this.setState({ items: [...this.state.items, newItem] });
 	};
+	handleDelete = () => {
+		this.deleteCheckList(this.props.checkList.id);
+		this.props.handleDelete(this.props.checkList.id);
+	};
 	deleteItem = (checkItemId) => {
 		this.setState({
 			items: this.state.items.filter((item) => {
