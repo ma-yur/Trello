@@ -3,16 +3,11 @@ import React, { Component } from "react";
 import AllBoards from "./Boards/AllBoards";
 
 export class Workspace extends Component {
-	// handleClick = (id) => {
-	// 	this.props.handleClick(id);
-	// };
 	render() {
 		return (
-			<div className="grid grid-cols-4 container mx-auto p-4 my-3  h-96">
-				<div className="bg-green-500">right</div>
-
+			<div className="flex items-center justify-center w-90 mx-auto p-5 my-3   h-full">
 				<AllBoards />
-			</div>
+			</div> 
 		);
 	}
 }

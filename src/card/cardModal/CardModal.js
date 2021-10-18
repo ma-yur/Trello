@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CheckLists from "./checkList/CheckLists";
 import CheckListBtn from "./checkList/CheckListBtn";
 
+import Cross from "../../components/buttons/Cross";
+
 export class CardModal extends Component {
 	constructor(props) {
 		super(props);
@@ -19,18 +21,18 @@ export class CardModal extends Component {
 	render() {
 		return (
 			<div
-				className=" bg-black bg-opacity-50 absolute inset-0 h-full flex items-center justify-center "
+				className=" bg-black bg-opacity-60 absolute inset-0 h-full flex items-center justify-center "
 				id="overlay"
 			>
-				<div className="bg-white  relative grid grid-cols-2 gap-8 w-5/12 p-20">
-					<div className="col-span-1">
+				<div className="bg-white  relative grid bg-gray-100 grid-cols-3 gap-8 w-5/12 p-20">
+					<div className="col-span-2 p-4">
 						<h1 className="text-bold">{this.props.name}</h1>
 						<p className="text-gray-500">
 							in list
 							<span className="italic underline ">{this.props.listName}</span>
 						</p>
 
-						<div>
+						<div >
 							<CheckLists
 								cardId={this.props.cardId}
 								addCheckListdata={this.state.addCheckListdata}
@@ -51,7 +53,7 @@ export class CardModal extends Component {
 						onClick={this.handleClose}
 						className="absolute top-0 right-0 p-10"
 					>
-						x
+						<Cross size="3xl" />
 					</button>
 				</div>
 			</div>

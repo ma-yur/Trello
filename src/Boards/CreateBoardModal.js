@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PrimaryBtn from "../components/buttons/PrimaryBtn";
 
 export class CreateBoardModal extends Component {
 	constructor(props) {
@@ -17,7 +18,10 @@ export class CreateBoardModal extends Component {
 	};
 	render() {
 		return (
-			<div className=" bg-black bg-opacity-70 absolute  top-0 h-1/5 w-1/5 flex  ">
+			<div
+				style={{ left: "40%" }}
+				className=" bg-black bg-opacity-70 rounded absolute  top-0  h-1/5 w-1/5 flex p-3 "
+			>
 				<form
 					onSubmit={this.handleSubmit}
 					action=""
@@ -35,9 +39,7 @@ export class CreateBoardModal extends Component {
 						placeholder="Enter board name...."
 					/>
 
-					<button className="bg-blue-500 p-1 text-white my-3">
-						Create board
-					</button>
+					<PrimaryBtn title="Create" />
 				</form>
 
 				<button
@@ -46,7 +48,6 @@ export class CreateBoardModal extends Component {
 				>
 					x
 				</button>
-				
 			</div>
 		);
 	}

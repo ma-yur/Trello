@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "../card/Card";
 import Addcard from "../card/Addcard";
-import DeleteMenu from "../DeleteMenu";
+import DeleteBtn from "../components/buttons/DeleteBtn";
 
 export class List extends Component {
 	constructor(props) {
@@ -68,10 +68,10 @@ export class List extends Component {
 		});
 		return (
 			<div className="bg-gray-200 shadow flex-shrink-0 flex-column w-72 m-5 pl-4 pb-3 pt-3">
-				<div className="flex justify-between">
+				<div className="flex justify-between p-2">
 					<div className="font-bold">{name} </div>
 					<div onClick={this.handleDelete}>
-						<DeleteMenu />
+						<DeleteBtn />
 					</div>
 				</div>
 				{cards}

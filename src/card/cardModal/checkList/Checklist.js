@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import CheckListItems from "./CheckListItems";
 import AddCheckListItems from "./AddCheckListItems";
 
-import DeleteBtn from "../../../DeleteBtn";
+
+import DeleteBtn from "../../../components/buttons/DeleteBtn";
 
 export class Checklist extends Component {
 	constructor(props) {
@@ -55,8 +56,8 @@ export class Checklist extends Component {
 	render() {
 		return (
 			<div>
-				<div className="flex items-center justify-between">
-					<h1 className=" font-bold  m-3 "> + {this.props.checkListName}</h1>
+				<div className="flex items-center justify-between py-5">
+					<h1 className=" font-bold  "> + {this.props.checkListName}</h1>
 					<div onClick={this.handleDelete}>
 						<DeleteBtn />
 					</div>

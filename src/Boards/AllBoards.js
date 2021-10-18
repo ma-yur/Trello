@@ -34,12 +34,12 @@ export class AllBoards extends Component {
 	render() {
 		let boards = this.state.boards.map((board) => {
 			return <Board key={board.id} {...board} />;
-		});
+		}); 
 
 		return (
-			<div className=" col-span-3  flex-column items-start px-4 ">
-				<h1>Your work space boards</h1>
-				<div className="flex flex-wrap">{boards}</div>
+			<div className="  flex-column items-center  w-full px-4 ">
+				<h1 className="text-2xl text-gray-500 font-bold">Your work space boards</h1>
+				<div className="flex flex-wrap my-5 gap-5">{boards}</div>
 				
 				<CreateBoard boardAdded={this.boardAdded} />
 			</div>

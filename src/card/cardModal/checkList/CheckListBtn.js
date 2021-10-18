@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PrimaryBtn from "../../../components/buttons/PrimaryBtn";
+import  Cross  from "../../../components/buttons/Cross";
 
 export class CheckListBtn extends Component {
 	constructor(props) {
@@ -32,7 +34,7 @@ export class CheckListBtn extends Component {
 			<>
 				<h2 onClick={() => this.setState({ isEditing: true })}>Check list</h2>
 				{this.state.isEditing && (
-					<div className="absolute bg-gray-400 bg-opacity-20 p-2">
+					<div className="absolute bg-gray-400 bg-opacity-30 p-2">
 						<form
 							onSubmit={this.handleSubmit}
 							className="flex-col p-2 "
@@ -47,15 +49,10 @@ export class CheckListBtn extends Component {
 								onChange={(e) => this.setState({ value: e.target.value })}
 							/>
 							<span className="flex items-center gap-4 m-2">
-								<button className="bg-blue-500 px-1 my-2 py-2 rounded ">
-									Add Checklist{" "}
-								</button>
-								<p
-									onClick={() => this.setState({ isEditing: false })}
-									className="text-xl hover:bg-gray-200 rounded-xl p-2 text-gray-500"
-								>
-									X
-								</p>
+								<PrimaryBtn title="Add check list" />
+								<div onClick={() => this.setState({ isEditing: false })}>
+									<Cross size="xl" />
+								</div>
 							</span>
 						</form>
 					</div>

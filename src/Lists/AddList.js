@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import PrimaryBtn from "../components/buttons/PrimaryBtn";
+import Cross from "../components/buttons/Cross";
+
 export class AddList extends Component {
 	constructor(props) {
 		super(props);
@@ -34,7 +37,7 @@ export class AddList extends Component {
 			return (
 				<form
 					onSubmit={this.handleSubmit}
-					className="bg-gray-300 w-72 m-5 pl-4 p-3"
+					className="bg-gray-300 w-72 m-5 pl-4 p-3 rounded"
 					action=""
 				>
 					<input
@@ -44,16 +47,11 @@ export class AddList extends Component {
 						value={this.state.listName}
 						onChange={(e) => this.setState({ listName: e.target.value })}
 					/>
-					<div className="flex items-center gap-5 ">
-						<button className="bg-blue-500 px-4 py-1 mt-2 rounded-md ">
-							Add
-						</button>
-						<p
-							onClick={this.handleCloseEdit}
-							className="text-gray-500 cursor-pointer text-xl p-1 flex "
-						>
-							X
-						</p>
+					<div className="flex items-center gap-5 my-2">
+						<PrimaryBtn title={"Add List"} />
+						<div onClick={this.handleCloseEdit}>
+							<Cross size="2xl" />
+						</div>
 					</div>
 				</form>
 			);

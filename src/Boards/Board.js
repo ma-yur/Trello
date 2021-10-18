@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 export class Board extends Component {
 	render() {
 		const { name, prefs } = this.props;
-		let backgroundColor = prefs.backgroundImage ? "red" : prefs.background;
+		console.log(this.props);
+		let background = prefs.backgroundImage
+			? `url(${prefs.backgroundImageScaled[2].url})`
+			: prefs.background;
 		return (
 			<Link
-				className=" h-20 w-1/5 inline-block cursor-pointer p-3  m-1  text-white"
+				className=" h-32 w-1/5  cursor-pointer p-3  text-white"
 				to={`/${this.props.id}`}
-				style={{ backgroundColor: backgroundColor }}
+				style={{ background: `${background} no-repeat center ` }}
 			>
-				{name}
+				<p className="font-bold">{name}</p>
 			</Link>
 		);
 	}
