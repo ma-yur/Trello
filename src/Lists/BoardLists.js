@@ -35,10 +35,24 @@ export class BoardLists extends Component {
 	addList = (newListData) => {
 		this.setState({ lists: [...this.state.lists, newListData] });
 	};
+	deleteList = (id) => {
+		this.setState({
+			lists: this.state.lists.filter((list) => {
+				return list.id !== id;
+			}),
+		});
+	};
 
 	render() {
 		let lists = this.state.lists.map((list) => {
-			return <List key={list.id} let list={list} />;
+			return (
+				<List
+					key={list.id}
+					let
+					list={list}
+					handleDeleteList={this.deleteList}
+				/>
+			);
 		});
 		if (!this.state.loading)
 			return (

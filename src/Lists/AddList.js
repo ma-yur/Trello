@@ -19,7 +19,6 @@ export class AddList extends Component {
 			}
 		)
 			.then((response) => {
-				console.log(`Response: ${response.status} ${response.statusText}`);
 				return response.json();
 			})
 			.then((data) => this.props.handleAddList(data))

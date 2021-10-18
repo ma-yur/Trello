@@ -43,7 +43,13 @@ export class CheckLists extends Component {
 			});
 		}
 	};
-
+	deleteCheckList = (id) => {
+		this.setState({
+			checklistsData: this.state.checklistsData.filter((checkList) => {
+				return checkList.id !== id;
+			}),
+		});
+	};
 	render() {
 		let checkLists = this.state.checklistsData.map((checkList) => {
 			return (
@@ -51,6 +57,7 @@ export class CheckLists extends Component {
 					key={checkList.id}
 					checkListName={checkList.name}
 					checkList={checkList}
+					handleDelete={this.deleteCheckList}
 				/>
 			);
 		});

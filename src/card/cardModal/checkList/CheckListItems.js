@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AddCheckListItems from "./AddCheckListItems";
 import CheckListItem from "./CheckListItem";
+import Cross from "../../../Cross";
 
 export class CheckListItems extends Component {
 	render() {
@@ -14,7 +14,6 @@ export class CheckListItems extends Component {
 		return (
 			<>
 				<div>{checkListItems}</div>
-
 			</>
 		);
 	}
