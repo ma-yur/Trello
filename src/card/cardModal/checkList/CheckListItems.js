@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import CheckListItem from "./CheckListItem";
-import Cross from "../../../Cross";
 
 export class CheckListItems extends Component {
+	handleDeleteItem = (checkItemId) => {
+		this.props.handleDeleteItem(checkItemId);
+	};
 	render() {
 		let checkListItems = this.props.checkListItems.map((item) => {
 			return (
 				<>
-					<CheckListItem key={item.id} itemName={item.name} />
+					<CheckListItem
+						key={item.id}
+						itemName={item.name}
+						checkListId={this.props.checkListId}
+						checkItemId={item.id}
+						handleDeleteItem={this.handleDeleteItem}
+					/>
 				</>
 			);
 		});
