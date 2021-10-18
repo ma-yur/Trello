@@ -32,6 +32,7 @@ export class CardModal extends Component {
 
 						<div>
 							<CheckLists
+								cardId={this.props.cardId}
 								addCheckListdata={this.state.addCheckListdata}
 								checkListIds={this.props.checkListIds}
 							/>

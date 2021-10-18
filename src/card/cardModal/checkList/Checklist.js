@@ -50,6 +50,8 @@ export class Checklist extends Component {
 			}),
 		});
 	};
+
+
 	render() {
 		return (
 			<div>
@@ -60,6 +62,7 @@ export class Checklist extends Component {
 					</div>
 				</div>
 				<CheckListItems
+					cardId={this.props.cardId}
 					checkListId={this.props.checkList.id}
 					checkListItems={this.state.items}
 					handleDeleteItem={this.deleteItem}

@@ -54,6 +54,7 @@ export class CheckLists extends Component {
 		let checkLists = this.state.checklistsData.map((checkList) => {
 			return (
 				<Checklist
+					cardId={this.props.cardId}
 					key={checkList.id}
 					checkListName={checkList.name}
 					checkList={checkList}
