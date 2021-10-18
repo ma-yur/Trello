@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import Cross from "../../../Cross";
 
 export class CheckListItem extends Component {
-	constructor(props) {
-		super(props);
-		console.log(props);
-	}
-
 	deleteItem = () => {
 		fetch(
 			`https://api.trello.com/1/checklists/${this.props.checkListId}/checkItems/${this.props.checkItemId}?key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6`,

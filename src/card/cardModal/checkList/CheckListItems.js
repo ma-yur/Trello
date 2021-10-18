@@ -8,15 +8,13 @@ export class CheckListItems extends Component {
 	render() {
 		let checkListItems = this.props.checkListItems.map((item) => {
 			return (
-				<>
-					<CheckListItem
-						key={item.id}
-						itemName={item.name}
-						checkListId={this.props.checkListId}
-						checkItemId={item.id}
-						handleDeleteItem={this.handleDeleteItem}
-					/>
-				</>
+				<CheckListItem
+					key={item.id}
+					itemName={item.name}
+					checkListId={this.props.checkListId}
+					checkItemId={item.id}
+					handleDeleteItem={this.handleDeleteItem}
+				/>
 			);
 		});
 		return (

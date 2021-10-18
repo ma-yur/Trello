@@ -34,7 +34,7 @@ export class CheckLists extends Component {
 		});
 	};
 	componentDidUpdate = (prev) => {
-		if (prev.addCheckListdata.name !== this.props.addCheckListdata.name) {
+		if (prev.addCheckListdata.id !== this.props.addCheckListdata.id) {
 			this.setState({
 				checklistsData: [
 					...this.state.checklistsData,
