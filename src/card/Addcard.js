@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import PrimaryBtn from "../components/buttons/PrimaryBtn";
+import Cross from "../components/buttons/Cross";
+
 export class Addcard extends Component {
 	constructor(props) {
 		super(props);
@@ -42,9 +45,9 @@ export class Addcard extends Component {
 		if (!this.state.isEditing) {
 			return (
 				<div onClick={this.handleEdit}>
-					<p className=" hover:bg-gray-300 cursor-pointer rounded w-11/12 p-1  text-gray-400 my-2">
+					<p className=" hover:bg-gray-300 cursor-pointer rounded w-11/12 p-1  text-gray-500 my-2">
 						{" "}
-						+ Add card
+						+ Add a card
 					</p>
 				</div>
 			);
@@ -66,16 +69,11 @@ export class Addcard extends Component {
 								this.setState({ cardName: e.target.value });
 							}}
 						/>
-						<div className=" flex gap-5 ">
-							<button className="bg-blue-500 p-2 text-blue-200 rounded">
-								ADD card
-							</button>
-							<button
-								onClick={this.closeEditing}
-								className="text-gray-400 text-4xl p-1"
-							>
-								x
-							</button>
+						<div className=" flex gap-5 items-center">
+							<PrimaryBtn title={"Add card"} />
+							<div onClick={this.closeEditing} className="text-gray-400  p-1">
+								<Cross size={"2xl"} />
+							</div>
 						</div>
 					</form>
 				</div>

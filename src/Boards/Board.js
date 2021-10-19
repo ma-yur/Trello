@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 export class Board extends Component {
 	render() {
 		const { name, prefs } = this.props;
-		console.log(this.props);
 		let background = prefs.backgroundImage
 			? `url(${prefs.backgroundImageScaled[2].url})`
-			: prefs.background;
+			: prefs.backgroundColor;
 		return (
 			<Link
 				className=" h-32 w-1/5  cursor-pointer p-3  text-white"
@@ -21,3 +20,4 @@ export class Board extends Component {
 }
 
 export default Board;
+

@@ -2,36 +2,40 @@ import React, { Component } from "react";
 import List from "./List";
 import AddList from "./AddList";
 
+import { getLists } from "../apis/listApis";
+
+import { getBoard } from "../apis/boardApis";
+
 export class BoardLists extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { lists: [], loading: true };
+		this.state = { lists: [], loading: true, background:"" };
 	}
-	UpdateData = () => {
-		fetch(
-			`https://api.trello.com/1/boards/${this.props.boardId}/lists?key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6`,
-			{
-				method: "GET",
-			}
-		)
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				this.setState({ lists: data, loading: false });
-			})
-			.catch((err) => console.error(err));
+
+	getListData = async (boardId) => {
+		let listsData = await getLists(boardId);
+		this.setState({ lists: listsData, loading: false });
+	};
+	getBackgroundImage = async (boardId) => {
+		let boardData = await getBoard(boardId);
+		let prefs = boardData.prefs;
+		let background = prefs.backgroundImage
+			? `url(${prefs.backgroundImageScaled[5].url}) no-repeat center`
+			: prefs.backgroundColor;
+		return background;
 	};
 
 	componentDidMount = () => {
-		this.UpdateData();
+		this.getListData(this.props.boardId);
+		// this.setState({ background: this.getBackgroundImage(this.props.boardId).then((data)=>data) });
+		this.getBackgroundImage(this.props.boardId).then((background)=>{
+			this.setState({ background:background})
+			
+			})
+		
 	};
-	componentDidUpdate = (prev) => {
-		if (prev.boardId !== this.props.boardId) {
-			this.UpdateData();
-		}
-	};
+
 	addList = (newListData) => {
 		this.setState({ lists: [...this.state.lists, newListData] });
 	};
@@ -56,9 +60,14 @@ export class BoardLists extends Component {
 		});
 		if (!this.state.loading)
 			return (
-				<div className="flex items-start">
-					<div className="flex items-start">{lists}</div>
-					<AddList boardId={this.props.boardId} handleAddList={this.addList} />
+				<div style={{background:this.state.background}} className="h-screen">
+					<div className="flex  items-start">
+						<div className="flex items-start">{lists}</div>
+						<AddList
+							boardId={this.props.boardId}
+							handleAddList={this.addList}
+						/>
+					</div>
 				</div>
 			);
 		else {

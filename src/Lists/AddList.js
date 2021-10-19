@@ -3,10 +3,12 @@ import React, { Component } from "react";
 import PrimaryBtn from "../components/buttons/PrimaryBtn";
 import Cross from "../components/buttons/Cross";
 
+import { addList } from "../apis/listApis";
+
 export class AddList extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { isEditing: true, listName: "" };
+		this.state = { isEditing: false, listName: "" };
 	}
 	handleEdit = () => {
 		this.setState({ isEditing: true });
@@ -14,22 +16,15 @@ export class AddList extends Component {
 	handleCloseEdit = () => {
 		this.setState({ isEditing: false });
 	};
-	updateList = () => {
-		fetch(
-			`https://api.trello.com/1/lists?name=${this.state.listName}&pos=bottom&idBoard=${this.props.boardId}&key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6`,
-			{
-				method: "POST",
-			}
-		)
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => this.props.handleAddList(data))
-			.catch((err) => console.error(err));
+
+	newList = async (listName, boardId) => {
+		let newListData = await addList(listName, boardId);
+		this.props.handleAddList(newListData);
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.updateList();
+		this.newList(this.state.listName, this.props.boardId);
+
 		this.setState({ listName: "" });
 	};
 	render() {
@@ -37,13 +32,13 @@ export class AddList extends Component {
 			return (
 				<form
 					onSubmit={this.handleSubmit}
-					className="bg-gray-300 w-72 m-5 pl-4 p-3 rounded"
+					className="bg-gray-200 w-72 m-5 pl-4 p-3 rounded"
 					action=""
 				>
 					<input
-						className="inline-block h-8 p-2"
+						className="inline-block h-8 p-2 rounded-md"
 						type="text"
-						placeholder="Add a new list "
+						placeholder="Enter list title"
 						value={this.state.listName}
 						onChange={(e) => this.setState({ listName: e.target.value })}
 					/>
@@ -59,9 +54,9 @@ export class AddList extends Component {
 			return (
 				<div
 					onClick={this.handleEdit}
-					className="bg-black hover:bg-gray-300 cursor-pointer bg-opacity-5 text-gray-500 shadow  w-72 m-5 pl-4 p-3 "
+					className=" bg-clip-padding backdrop-filter backdrop-blur-2xl bg-opacity-25 bg-white cursor-pointer rounded-md  text-gray-500 shadow  w-72 m-5 pl-4 p-2 "
 				>
-					+ add list
+					+ Add another list
 				</div>
 			);
 		}

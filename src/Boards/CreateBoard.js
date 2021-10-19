@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import CreateBoardModal from "./CreateBoardModal";
 
+import { createBoard } from "../apis/boardApis";
+
 export class CreateBoard extends Component {
 	constructor(props) {
 		super(props);
@@ -15,23 +17,14 @@ export class CreateBoard extends Component {
 	closeModal = () => {
 		this.setState({ openModal: false });
 	};
-	updateData = (name) => {
-		fetch(
-			`https://api.trello.com/1/boards/?name=${name}&key=a32c5c0c541016f7fd5c81bc1e4e47ef&token=a4711b0c6df1e11c11b241284521cf44441681fb61c66088f45fae8a9a4501f6`,
-			{
-				method: "POST",
-			}
-		)
-			.then((response) => {
-				return response.json();
-			})
-			.then((data)=>{
-				this.props.boardAdded(data)
-			})
-			.catch((err) => console.error(err));
+
+	updateBoard = async (name) => {
+		let boardData = await createBoard(name);
+		this.props.onBoardAdd(boardData);
 	};
-	createBoard = (name) => {
-		this.updateData(name);
+
+	handleSubmit = (name) => {
+		this.updateBoard(name);
 	};
 
 	render() {
@@ -47,7 +40,7 @@ export class CreateBoard extends Component {
 				{this.state.openModal && (
 					<CreateBoardModal
 						closeModal={this.closeModal}
-						handleSubmit={this.createBoard}
+						OnSubmit={this.handleSubmit}
 					/>
 				)}
 			</>

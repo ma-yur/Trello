@@ -67,7 +67,7 @@ export class List extends Component {
 			);
 		});
 		return (
-			<div className="bg-gray-200 shadow flex-shrink-0 flex-column w-72 m-5 pl-4 pb-3 pt-3">
+			<div className="bg-gray-100 rounded shadow flex-shrink-0 flex-column w-72 m-5 pl-4 pb-3 pt-3">
 				<div className="flex justify-between p-2">
 					<div className="font-bold">{name} </div>
 					<div onClick={this.handleDelete}>

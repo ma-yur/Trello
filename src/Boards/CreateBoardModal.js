@@ -9,7 +9,7 @@ export class CreateBoardModal extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.handleSubmit(this.state.boardName);
+		this.props.OnSubmit(this.state.boardName);
 		this.props.closeModal();
 	};
 

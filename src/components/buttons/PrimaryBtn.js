@@ -4,7 +4,7 @@ export class PrimaryBtn extends Component {
 	render() {
 		return (
 			<div>
-				<button className="bg-blue-400 text-blue-100 hover:bg-blue-500 rounded px-4 py-1 ">
+				<button className="bg-sky-700 text-blue-50 hover:bg-sky-800 rounded px-4 py-1 ">
 					{this.props.title}
 				</button>
 			</div>
